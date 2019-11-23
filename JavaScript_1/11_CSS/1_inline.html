@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta http-equiv="Content-Type" content="text/html" charset="utf-8">
+    <style>
+        .spin{-webkit-transform:rotate(120deg); }
+    </style>
+    <script>
+        function styleText()
+        {
+            var pic = document.getElementById("text");
+            pic.style.borderStyle ="dashed";
+        }
+
+        function rotatePic()
+        {
+            var pic = document.getElementById("pic");
+            var origStyle = pic.style.cssText;
+            var start = (new Date).getTime();
+            var transformTime = 1000;
+            rotate();
+
+            function rotate()
+            {
+                var now = (new Date).getTime();
+                var fraction = (now-start) / transformTime;
+                if (fraction < 1)
+                {
+                    pic.style.transform = "rotate("+fraction + "turn)";//chrome
+                    pic.style.mozTransform = "rotate("+fraction + "turn)";//mozilla
+                    pic.style.oTransform = "rotate("+fraction + "turn)";//opera
+                    pic.style.msTransform = "rotate("+fraction + "turn)";//msIE9+
+
+                    setTimeout(rotate, Math.min(10,transformTime-(now-start)))
+                }
+                else pic.style.cssText = origStyle;
+            }
+        }
+    </script>
+</head>
+<body>
+<div id="text">
+    Это абзац текста...
+</div>
+<div>
+    А это картинка:<br>
+    <img id="pic" src="javascript.jpg">
+</div>
+<button onclick="styleText()">стилизовать текст</button>
+<button onclick="rotatePic()">Повернуть картинку</button>
+</body>
+</html>

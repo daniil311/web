@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html" charset="utf-8">
+    <title></title>
+</head>
+<body>
+<script>
+    now = new Date(); //объявим переменную, для удобства
+    someday = new Date(2019,2,1,0,0,0);
+
+    document.write(now);
+    document.write("<br>");
+    document.write(someday);
+    document.write("<br>");
+    document.write("Объекты типа Date можно вычитать, получая разницу в миллисекундах:<br>");
+    document.write(now - someday); //результат в миллисекундах
+    document.write("<br>");
+    document.write("Сегодня у нас " + now.getDay() + " день недели"); //день недели: 0 = воскресенье, 6 = суббота
+
+</script>
+</body>
+</html>

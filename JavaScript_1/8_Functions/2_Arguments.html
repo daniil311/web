@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta http-equiv="Content-Type" content="text/html" charset="utf-8">
+    <script>
+        function getPropertyNames(o, /* optional */ a)
+        //функция позволяет собрать имена свойств объекта в массив
+        {
+            if (a === undefined) a = []; //Если параметр не передан, использовать новый массив
+            for(var property in o) a.push(property);
+            return a;
+        }
+
+        function getMax() //нас не интересует, сколько параметров сюда придет
+        {
+            var max = Number.NEGATIVE_INFINITY;
+            for(var i in arguments)
+            {
+                if (Number(arguments[i]) && (arguments[i] > max)) max = arguments[i];
+            }
+            return max;
+        }
+    </script>
+</head>
+<body>
+<script>
+    document.write("Вызов функции с опущенными параметрами: <br>");
+    var myStr = "Hello World";
+    var a = getPropertyNames(myStr);
+    document.write(a + "<br>");
+    //вывелись все элементы строки - ее символы
+    var myObj = {x:0, y:1, z:-1};
+    getPropertyNames(myObj, a);
+    document.write(a);
+    //добавились свойства myObj
+    document.write("<br>Вызов функции с \"излишними\" параметрами: <br>");
+    document.write("Максимум из всех: " + getMax(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20));
+
+
+</script>
+</body>
+</html>

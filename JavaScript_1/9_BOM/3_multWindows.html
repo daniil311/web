@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta http-equiv="Content-Type" content="text/html" charset="utf-8">
+    <script>
+        var URL = 'http://www.google.ru';
+        var win;
+    </script>
+</head>
+<body onload="open(URL,'firstwindow')">
+    <!-- вызов выше будет блокирован большинством браузеров-->
+
+    <a href="javascript:win = open(URL,'firstwindow')">открыть окно через javascript:</a><br>
+    <!-- А это то же самое, что прописать функцию в отдельном скрипте-->
+
+    <button onclick="opener()">Открыть окно по onclick</button><br>
+    <!-- Функция описана ниже в скрипте-->
+
+    <button onclick="switchTo(win)" id="switcher">http://www.google.ru</button>
+    <br>
+    <br>
+    <button onclick="closer(win)">Закрыть окно</button><br>
+
+
+    <script>
+    function opener()
+    {
+        win = window.open(URL,'firstwindow');
+    }
+
+    function closer(wnd)
+    {
+        wnd.close();
+    }
+
+    function switchTo()
+    {
+        URL=(URL=='http://www.google.ru')?'multWindows_.html':'http://www.google.ru';
+        document.getElementById("switcher").innerHTML = URL;
+    }
+
+</script>
+</body>
+</html>

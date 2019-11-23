@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta http-equiv="Content-Type" content="text/html" charset="utf-8">
+    <script>
+        var count=0;
+        function alerter()
+        {
+            alert("Это вызванный алерт");
+        }
+
+        function counter()
+        {
+            count++;
+            document.getElementById("cnt").innerText = count.toString();
+        }
+    </script>
+</head>
+<body>
+<div>
+    Это счетчик:
+</div>
+<div id="cnt">
+
+</div>
+</body>
+</html>

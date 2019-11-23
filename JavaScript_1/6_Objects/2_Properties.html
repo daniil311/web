@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta http-equiv="Content-Type" content="text/html" charset="utf-8">
+    <!--Если этой строки нет, этот скрипт не заработает-->
+    <!--В скрипте используется Unicode символы-->
+</head>
+<body>
+<script>
+    var book =   //сложный объект
+    {
+        "Название": "Lord of Infinite Loops",//наименования свойств могут содержать пробелы
+        'for': "для всех",  //и даже быть ключевыми словами
+        Автор:                   //Свойством объекта может быть другой объект
+        {
+            Имя: "Джон",         //Если наименования свойств простые,
+            Фамилия: "Толкин",   //их можно не заключать в кавычки
+            Инициалы: "Р.Р."
+        }
+    };
+    document.write("Обратимся к какому-то свойству...<br>");
+    document.write(book.Автор.Фамилия);
+    document.write("<br>");
+    document.write(book["Автор"]["Имя"]); //Объект - это колелкция...
+
+    obj = {prop0:Math.random(), prop1:Math.random(), prop2:Math.random(), prop3:Math.random()};
+    document.write("<br>Значения свойств объекта:<br>");
+    for (var i=0;i<=3;i++)
+    {
+        document.write(obj["prop"+i] + "<br>");
+    }
+    document.write("Те же самые значения свойств, через перечислитель:<br>");
+    for (var k in obj)
+    {
+        document.write(obj[k] + "<br>");
+    }
+    var myObj = {};
+    document.write("Попытка обратиться к несуществующему свойству:<br>");
+    document.write(myObj.myProp + "<br>");
+    //myObj.myProp.Something => TypeError
+    myObj.myProp = {Something: 42};
+    var something = myObj && myObj.myProp && myObj.myProp.Something;
+    document.write("Обращение по цепочке дает: " + something + "<br>");
+</script>
+</body>
+</html>

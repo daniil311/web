@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta http-equiv="Content-Type" content="text/html" charset="utf-8">
+</head>
+<body>
+<script>
+    document.write("Вызов функций ДО их определения в коде<br>");
+    document.write(myFunc() + "<br>");
+    //document.write(myFunc1() + "<br>");
+    //Декларация функции
+    function myFunc() {return "Декларрация функции"};
+    //Функциональное выражение
+    var myFunc1 = function() {return "Функциональное выражение"};
+    document.write("Вызов функций ПОСЛЕ их определения в коде<br>");
+    document.write(myFunc() + "<br>");
+    document.write(myFunc1() + "<br>");
+
+    function emptyFunc() {};
+
+    document.write("Так будет, если <b>обратиться</b> к функции:<br>");
+    document.write(myFunc + "<br>");
+    document.write(myFunc1 + "<br>");
+    document.write("<br>А так - если <b>вызвать</b> пустую функцию :<br>");
+    document.write(emptyFunc() + "<br>");
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta http-equiv="Content-Type" content="text/html" charset="utf-8">
+    <script>
+        function changeHandler()
+        {
+            // Установка СВОЙСТВА ОБЪЕКТА
+            document.getElementById("myButton").onclick=function(){alert('Это другой обработчик')};
+        }
+
+        function addHandler()
+        {
+            var button = document.getElementById("noHandler");
+            var handler = function(){ alert("Это сработал обработчик") };
+            //локально перекрываем глобально определенную функцию handler()
+            button.addEventListener("click",handler,false);
+            button.innerText = "Обработчик задан";
+        }
+
+        function removeHandler()
+        {
+            var button = document.getElementById("noHandler");
+            var handler = function(){ alert("Это сработал обработчик") };
+            //локально перекрываем глобально определенную функцию handler()
+            button.removeEventListener("click",handler,false);
+            button.innerText = "Обработчик не задан...";
+        }
+
+        function handler() { alert("Это сработал обработчик") };
+    </script>
+</head>
+<body>
+<!-- Установка АТРИБУТА HTML-элемента-->
+<button id="myButton" onclick="alert('Привет!')">Обработчик как свойство onclick</button>
+<a href="javascript:changeHandler()">Привязать другой обработчик</a><br><br>
+
+<button id="noHandler">Обработчик не задан...</button>
+<a href="javascript:addHandler()">Задать обработчик!</a>
+<a href="javascript:removeHandler()">Убрать обработчик!</a><br><br>
+
+</body>
+</html>

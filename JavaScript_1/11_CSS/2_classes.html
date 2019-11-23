@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta http-equiv="Content-Type" content="text/html" charset="utf-8">
+    <style>
+        .c1 {font-weight: bold; }
+        .c2 {color: red; }
+        .c3 {color: green; }
+        .c4 {font-size: 10px; }
+        .c5 {padding-left: 0.5em; }
+        .c6 {padding-left: 10%; }
+
+
+    </style>
+    <script>
+        function toggleClass()
+        {
+            var cssClass = document.querySelector("input[name='classtoapply']:checked").value;
+            var div = document.querySelector("input[name='DIV']:checked").value;
+            document.getElementById(div).classList.toggle(cssClass);
+        }
+    </script>
+</head>
+<body>
+<div id="div1">
+    Первый DIV1
+    <div id="div2">
+        Вложенный DIV2
+        <div id="div3">
+            Более глубоко вложенный DIV3
+        </div>
+    </div>
+</div>
+<span>Применить класс:</span><br>
+<input type="radio" name="classtoapply" value="c1" checked><span class="c1">c1</span><br>
+<input type="radio" name="classtoapply" value="c2"><span class="c2">c2</span><br>
+<input type="radio" name="classtoapply" value="c3"><span class="c3">c3</span><br>
+<input type="radio" name="classtoapply" value="c4"><span class="c4">c4</span><br>
+<input type="radio" name="classtoapply" value="c5"><span class="c5">c5</span><br>
+<input type="radio" name="classtoapply" value="c6"><span class="c6">c6</span><br>
+<span>к элементу:</span><br>
+<input type="radio" name="DIV" value="div1" checked>div1<br>
+<input type="radio" name="DIV" value="div2">div2<br>
+<input type="radio" name="DIV" value="div3">div3<br>
+
+<button onclick="toggleClass()">Применить</button>
+</body>
+</html>

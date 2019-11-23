@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <style type="text/css">
+        label {float:left; padding-right:10px;}
+        .field {clear:both; text-align:right; line-height:25px;}
+        .main {float:left;}
+        input[type=text]:focus:valid,
+        input[type=email]:focus:valid,
+        input[type=date]:focus:valid { outline: 2px #0f0 solid; }
+
+        input[type=text]:focus:invalid,
+        input[type=email]:focus:invalid,
+        input[type=date]:focus:invalid { outline: 2px #f00 solid; }
+    </style>
+</head>
+<body>
+<form>
+<div class="main">
+    <div class="field">
+        <label for="name">Имя</label>
+        <input type="text" id="name" required placeholder="Ваше имя"/>
+    </div>
+    <div class="field">
+        <label for="surname">Фамилия</label>
+        <input type="text" id="surname" required placeholder="Ваша фамилия"/>
+    </div>
+    <div class="field">
+        <label for="email">Электронный адрес</label>
+        <input type="email" id="email" required/>
+    </div>
+    <div class="field">
+        <label for="bdate">Дата рождения</label>
+        <input type="date" id="bdate" max="2019-01-01" min="1950-01-01" required/>
+    </div>
+    <div class="field">
+        <input type="submit" id="submit" value="Проверить"/>
+    </div>
+</div>
+</form>
+</body>
+</html>

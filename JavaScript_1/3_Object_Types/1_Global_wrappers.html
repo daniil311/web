@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta http-equiv="Content-Type" content="text/html" charset="utf-8">
+</head>
+<body>
+<script>
+    document.write(this === window); //проверим, что объект global - это действительно window
+    window.document.write("<br>Запишем в документ текст<br>");
+    str = "Hello World";
+    comp = (new String(str) == str); //оператор == сравнивает по значениям
+    comp1 = (new String(str) === str); //оператор === сравнивает строго
+    document.write("Сравним строку с ее оберткой: " + comp + "; " + comp1 + "<br>");
+    num = 12345;
+    comp = (new Number(num) == num);
+    comp1 = (new Number(num) === num);
+    document.write("А теперь сравним число с его оберткой: " + comp + "; " + comp1 + "<br>");
+    document.write("<br>При этом, операции выполнять можно как с литералами, так и с их обертками:<br>");
+    document.write("12 / 6 = " + new Number(12) / 6);
+</script>
+</body>
+</html>

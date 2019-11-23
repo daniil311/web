@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html" charset="utf-8">
+    <title></title>
+    <script>
+        function strings()
+        {
+            document.write("Это строка<br>");
+            document.write('А это строка "с двойными кавычками"<br>');
+            document.write("Равно как и строка 'с одинарными кавычками'<br>");
+            document.write("а еще можно \"сделать так\"<br>");
+            document.write('или \'так\'<br>');
+            document.write("<button onclick=\"alert('Да,\\n именно так')\">Ну и даже вот так</button><br>");
+        }
+    </script>
+</head>
+<body>
+<script>
+    var str = "Это просто строка с текстом";
+    document.write("Длина строки '" + str + "' равна " + str.length + "<br>");
+    document.write("Результат выполнения .slice(0,10) для строки выглядит так: '" + str.slice(0,10) + "'<br>");
+    document.write("НО! Исходная строка остается неизменной: '" + str+ "'<br>");
+    //строковый примитив неизменяем!
+    document.write(str[0]+"<br>");
+    str[0]="э";
+    document.write(str+"<br>");
+</script>
+<button onclick="strings()" >Тест строк</button><br>
+</body>
+</html>

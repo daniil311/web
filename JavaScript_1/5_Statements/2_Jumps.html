@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta http-equiv="Content-Type" content="text/html" charset="utf-8">
+</head>
+<body>
+<script>
+    var myMatrix = [[1,2],[4,,6],[7,8,9]];
+    var myArray = [0,1,2,3,4,,6,7,,9];
+    var i,j;
+
+/*
+    //выход из цикла
+    for (i=0;i<3;i++)
+    {
+        for (j=0;j<3;j++)
+        {
+            //if (!myMatrix[i][j]) break;
+            document.write(myMatrix[i][j] + " ");
+
+        }
+        document.write("<br>");
+    }*/
+
+
+    /*
+    for(i=0;i<10;i++)
+    {
+        if (!myArray[i]) continue;
+            myArray[i] = myArray[i]*myArray[i];
+            document.write(myArray[i] + " ");
+    }
+    */
+
+
+    //Для выхода не только из текущего цикла, но для полного пропуска текущего участка
+    label:
+    {
+        for (i=0;i<3;i++)
+            for (j=0;j<3;j++)
+                if (myMatrix[i][j] == null) break label;
+        alert("успешная проверка");
+    }
+
+
+
+    //Альтернатива с процессом обработки ошибок
+    try
+    {   //код, где может возникнуть ошибка
+        for (i=0;i<3;i++)
+        for (j=0;j<3;j++)
+            if (myMatrix[i][j] == null) throw new Error("ОШИБКА");
+        alert("успешная проверка");
+    }
+    catch (ex)
+    {   //локальная обработка ошибки
+        alert(ex);
+    }
+    finally
+    {   //Завершение, выполняется независимо от возникновения ошибки
+        alert("Выполнение завершено");
+    }
+
+</script>
+</body>
+</html>

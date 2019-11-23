@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta http-equiv="Content-Type" content="text/html" charset="utf-8">
+</head>
+<body>
+<script>
+    document.write("Инициализация массивов и объектов:<br>");
+    let myArray = [0,,,3,4,,6]; //Разреженный
+    const my2DArray = [[0,1,2],[3,4,5],[6,7,8]]; //двумерный
+    var myComplexArray = [null, "one", 2, 1+1+1, {x:"four"},[,5]]; //сложный
+
+    document.write(myArray+"<br>");
+    document.write(my2DArray+"<br>");
+    document.write(myComplexArray+"<br>");
+
+    var myObject = {x:1, y:2};
+    document.write("myObject: " + myObject.x + ", " + myObject.y +"<br>");
+    var myEmptyObject = {};
+    //var myEmptyObject1 = {x, y}; Свойства нельзя задавать не инициализировав...
+    var myEmptyObject1 = {x:undefined, y:undefined}; //но можно их инициализировать как undefined
+    //... их при этом можно "опрашивать":
+    document.write("myEmptyObject: " + myEmptyObject.x + ", " + myEmptyObject.y +"<br>"); //Таких свойств нет
+    //объекты и массивы можно бесконечно вкладывать друг в друга.
+    myEmptyObject.a = {q:-1,w:[0,1,2]};
+    document.write("Ну и, конечно же, можно создавать циклические ссылки:<br>");
+    myEmptyObject.b = myObject;
+    myObject.x = myEmptyObject;
+    document.write(myObject.x.b.x.b.x.b.x.b.x.b.x.b.x.b.x.b.x.b.x.b.x.b.x.b.y + "<br>");
+    //Обращение к свойствам можно конструировать в коде:
+    document.write("К свойствам объектов можно также обратиться через запись Объект.[\"Свойство\"]: " +  myObject["y"] + "<br>");
+</script>
+</body>
+</html>

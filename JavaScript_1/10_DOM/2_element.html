@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta http-equiv="Content-Type" content="text/html" charset="utf-8">
+    <script>
+        function innerHTMLSample()
+        {
+            var elt = document.getElementById("myDiv");
+            alert(elt.innerHTML);
+        }
+
+        function innerTextSample()
+        {
+            var elt = document.getElementById("myDiv");
+            alert(elt.innerText);
+        }
+
+        function outerHTMLSample()
+        {
+            var elt = document.getElementById("myDiv");
+            alert(elt.outerHTML);
+        }
+
+        function insertAdjacentSample()
+        {
+            var whereToPut = document.querySelector("input:checked").value;
+            //да, тут выбор CSS селектором.
+            //какие бывают селекторы: http://www.w3.org/TR/css3-selectors/#selectors
+            var elt = document.getElementById("myHeader");
+            //Выбираем для наглядности не myDiv, а myHeader.
+            elt.insertAdjacentHTML(whereToPut,"<i> = вставленный HTML = </i>")
+        }
+    </script>
+</head>
+<body>
+<div id="myDiv">
+    <h1 id="myHeader">
+        содержимое element
+    </h1>
+</div>
+<button onclick="innerHTMLSample()">Пример innerHTML</button>
+<button onclick="innerTextSample()">Пример innerText</button>
+<button onclick="outerHTMLSample()">Пример outerHTML</button>
+<br><br>
+<input type="radio" name="adjacent" value="beforebegin" checked>beforebegin<br>
+<input type="radio" name="adjacent" value="afterbegin">afterbegin<br>
+<input type="radio" name="adjacent" value="beforeend">beforeend<br>
+<input type="radio" name="adjacent" value="afterend">afterend<br>
+<button onclick="insertAdjacentSample()">Пример insertAdjacentHTML()</button>
+</body>
+</html>

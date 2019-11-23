@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html" charset="utf-8">
+    <title></title>
+</head>
+<body>
+Варианты записи чисел:<br>
+<script>
+    document.write(42);
+    document.write("<br>"); //чтобы числа не сливались в одну строку
+    document.write(0xDEADBEEF);
+    document.write("<br>");
+    document.write(3.14);
+    document.write("<br>");
+    document.write(.9999999999999999);
+    document.write("<br>");
+    document.write(6.02e23);
+    document.write("<br>");
+    document.write(9.1E-31);
+    document.write("<br>Особые нечисловые константы:<br>");
+    document.write(1/0 + "<br>");
+    document.write(-1/0 + "<br>");
+    document.write(0/0 + "<br>");
+    document.write("<br>Сравнение чисел:<br>");
+    document.write((Math.round((0.3 - 0.2)*100) == Math.round((0.2 - 0.1)*100)) + "<br>");
+    document.write((0.1 == (0.2 - 0.1)) + "<br>");
+    alert(Math.round((0.3 - 0.2)*100));
+</script>
+
+</body>
+</html>

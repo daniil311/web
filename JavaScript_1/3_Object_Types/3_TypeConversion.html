@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta http-equiv="Content-Type" content="text/html" charset="utf-8">
+</head>
+<body>
+<div> Преобразования типов </div>
+<script>
+    x = Number("1.2345678e+2");
+    z = parseFloat("1.2345678e+2");
+    document.write("Вызов конструктора и вызов метода Global: " + (x===z) + "<br>")
+    y = x-"10";
+    document.write("Арифметика: " + y+"<br>");
+    document.write("Явное преобразование, с 2 знаками, возможно - в экспоненциальной форме: " + x.toPrecision(2) + "<br>");
+    document.write("явное преобразование, с плавающей точкой, 4 знака после запятой: " + x.toFixed(4) + "<br>");
+    document.write("<br>");
+    document.write("Вызов конструктора для Number: " + Number("1.234") + "<br>");
+    document.write("Вызов конструктора для String: " + String(true) + "<br>");
+    document.write("Вызов конструктора для Boolean: " + Boolean("") + "<br>");
+    document.write("<br>");
+    document.write("Вызов parseInt('1.234'): " + parseInt("1.234") + "<br>");
+    document.write("Вызов parseFloat('1.234'): " + parseFloat("1.234") + "<br>");
+    document.write("Еще один вызов parseFloat('-1.234e+02sf'): " + parseFloat("-1.234e+02sf") + "<br>");
+    document.write("И пример неудачного парсинга (Not a Number): " + parseFloat("$-1.234e+02sf") + "<br>");
+    document.write("<br>Пример неявного приведения объекта к примитивным типам (операции по умолчанию):<br>");
+    o = {};
+    document.write(o);
+    document.write("<br>");
+    document.write(1 - o);
+    document.write("<br>А так будет, если объекту указать операции приведения:<br>");
+    o.toString = function() { return "Это объект o!" }; //так в JavaScript задаются функции
+    o.valueOf = function() { return 0 }; //да, функции в JavaScript не типизированы!
+    document.write(o);
+    document.write("<br>");
+    document.write(1 - o);
+</script>
+</body>
+</html>

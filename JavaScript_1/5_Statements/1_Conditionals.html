@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta http-equiv="Content-Type" content="text/html" charset="utf-8">
+    <script>
+        //здесь опишем все функции с условиями
+        simpleConditional = function(isTrue)
+        {
+            if(isTrue) alert("Да, правда!"); else alert("Нет, неправда!");
+        }
+
+        ifElse = function(arg)
+        {
+            if (arg==1) alert("Один!");
+            else if (arg==2) alert("Два!");
+            else if (arg==3) alert("Три!");
+            else alert("Много...");
+        }
+
+        switchCaseBreak = function()
+        {
+            var i=1;
+            switch(i++)
+            {
+                case 1: alert("Один!"); break;
+                case 2: alert("Два!"); break;
+                case 3: alert("Три!"); break;
+                default: alert("Много..."); break;
+            }
+
+        }
+
+        switchCaseNoBreak = function(arg)
+        {
+            var i=1;
+            switch(i++) //тонкий момент с i++
+            {
+                case 1: alert("Один!");
+                case 2: alert("Два!");
+                case 3: alert("Три!");
+                default: alert("Много...");
+            }
+
+        }
+    </script>
+</head>
+<body>
+<button onclick="simpleConditional(false)">Правда?</button><br>
+<button onclick="ifElse(1)">IF / ELSE IF</button><br>
+<button onclick="switchCaseBreak()">Switch</button><br>
+<button onclick="switchCaseNoBreak()">Switch, NO breaks</button><br>
+</body>
+</html>

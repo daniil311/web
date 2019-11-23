@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta http-equiv="Content-Type" content="text/html" charset="utf-8">
+</head>
+<body>
+<script>
+    //работа с массивами и методы
+    document.write("Пример .join():<br>");
+    document.write([1,2,3,4].join() + "<br>");
+    document.write("Если передать аргумент ' - ': " + [1,2,3,4].join(" - ") + "<br>");
+
+    document.write("<br>Пример .reverse():<br>");
+    document.write([1,2,3,4].reverse() + "<br>");
+
+    document.write("<br>Пример .sort():<br>");
+    document.write(["o","l","H","e","l"].sort().join("") + "<br>"); //да, это сортируется как надо!
+    document.write([5,6,7,8].sort(function(a,b){return (b-a);}).join("") + "<br>");
+    //да, это пример обратной сортировки. Почему и как работает - разберем в разделе "функции"
+
+    document.write("<br>Пример .concat():<br>");
+    document.write([1,2,3,4].concat([5,6,7,8]) + "<br>");
+    document.write("Еще примеры:<br>");
+    document.write([1,2,3].concat(4) + "<br>");
+    document.write([1,2,3].concat([4,5],[6,[7,8]])[6] + "<br>");
+    //concat() "разглаживает" только один уровень массива, остальные входят как они есть
+
+    document.write("<br>Пример .slice():<br>"); //не изменяет исходный массив!
+    document.write([1,2,3,4].slice(2) + "<br>");
+    document.write([0,1,2,3,4,5].slice(2,4) + "<br>");
+    document.write([0,1,2,3,4,5].slice(2,-2) + "<br>"); //элемент относительно конца массива
+    //второй аргумент, независимо от знака - "по него НЕ включительно"
+
+    document.write("<br>Пример .splice():<br>"); //изменяет исходный массив!
+    var myArr = [1,2,3,4,5];
+    document.write(myArr.splice(2,2,[1,2],[3,4],5)+"<br>"); //будет выведено то, что вырезано
+    document.write(myArr + "<br>"); //будет выведено то, что получилось
+</script>
+</body>
+</html>

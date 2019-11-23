@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta http-equiv="Content-Type" content="text/html" charset="utf-8">
+</head>
+<body onload="runParser()">
+<script>
+    function runParser()
+    {
+        var args = {};
+        document.write("Содержимое location.search: " + location.search + "<br>");
+        var query = location.search.substring(1);   //Обрежем строку по "?"
+        var pairs = query.split("&");               //разделим строку по символам "&"
+
+        for(var i = 0; i < pairs.length; i++)
+        {
+            var pos = pairs[i].indexOf('=');        //каждый элемент массива "name=value"
+            if (pos == -1) continue;                //"=" не найден, пропустить
+            //иначе выделим имя параметра и значение
+            var name = pairs[i].substring(0,pos);
+            var value = pairs[i].substring(pos+1);
+            value = decodeURIComponent(value);      //раскодировать значение
+            args[name] = value;
+        }
+
+        for (name in args)
+        {
+            document.write(name + " = " + args[name] + "<br>");
+        }
+    }
+</script>
+</body>
+</html>

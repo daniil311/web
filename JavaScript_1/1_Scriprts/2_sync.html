@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta http-equiv="Content-Type" content="text/html" charset="utf-8">
+    <script>
+        f = function(a)
+        {
+            for(var i=0;i<100000000;i++) {}  //имитация delay
+            return a>1?a*f(a-1):1;
+        }
+    </script>
+</head>
+<body>
+<div>
+    Привет!
+</div>
+<script>
+    for(i=1;i<=10;i++)
+    {
+        document.write(f(i) + "<br>");
+    }
+</script>
+</body>
+</html>

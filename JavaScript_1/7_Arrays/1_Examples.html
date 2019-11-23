@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta http-equiv="Content-Type" content="text/html" charset="utf-8">
+</head>
+<body>
+<script>
+    //Использование конструктора
+    var a = new Array();   //пустой массив, совсем пустой
+    var b = new Array(3);  //массив длиной 3
+    var c = new Array(1,2);//чувствуете разницу?
+    var d = [];
+    var e = [,,,];  //откройте пример в Internet Explorer и Chrome, почувствуйте разницу.
+    document.write("Полученные массивы:<br>");
+    document.write("a: " + a + "<br>");
+    document.write("b: " + b + "<br>");
+    document.write("c: " + c + "<br>");
+    document.write("d: " + d + "<br>");
+    document.write("e: " + e + "<br>");
+    //обращение к элементам:
+    //по сути, массив - тот же объект со свойствами;
+    //наименования свойств этого объекта - строковые представления чисел.
+    document.write("<br>myArray = [0,1,2,3,4];<br>");
+    myArray = [0,1,2,3,4]; //переинициализируем
+    document.write("Элемент с индексом \"0\": " + myArray["0"] + "<br>");
+    document.write("Элемент с индексом 5: " + myArray[5] + "<br>");
+    //да, здесь нет выхода из границ массива!
+    document.write("Длина массива: " + myArray.length + "<br>");
+    document.write("<br>Добавим элемент в позицию 3.1415<br>");
+    myArray[3.1415] = 3.14159265358979;
+    document.write("Длина массива после создания элемента c нецелым \"индексом\": " + myArray.length + "<br>");
+    document.write("Собственно сам элемент с индексом 3.1415: " + myArray[3.1415] + "<br>");
+    document.write("При этом, элементы с индексами 3 и 4: " + myArray[3] + "; " + myArray[4] + "<br>");
+    //Индекс массива может быть даже объектом....
+    var obj1 = {x:1};
+    var obj2 = {y:2};
+    myArray[obj1] = "x";
+    document.write("Элемент массива с индексом-объектом: " + myArray[obj2] + "<br>");
+    //заметим, в качестве индексов передаются РАЗНЫЕ объекты.
+    document.write("Элемент массива с индексом-объектом: " + myArray["[object Object]"] + "<br>");
+
+    document.write("<br>Итератор выводит ВСЕ значения массива:<br>");
+    for(var i in myArray)
+        document.write(myArray[i] + "<br>");
+
+    myArray.length = 3; //это ооставит в массиве элементы с индексами 0, 1 и 2
+    document.write("<br>Элемент с индексом 3 после изменения длины: " + myArray[3] + "<br>");
+    myArray.length = 0;
+    //Когда длина массива устанавливается в 0, он полностью очищается
+    myArray.length = 4;
+    //ИНДЕКСИРОВАННЫЕ элементы в массиве не восстанавливаются после восстановления длины
+    document.write("Элемент с индексом 1 после обнуления: " + myArray[1] + "<br>");
+    document.write("При этом свойство \"3.1415\" никуда не делось: " + myArray[3.1415] + "<br>");
+
+    var solidArray = [0,1,2,3,4,5,6];
+    var sparseArray = [];
+        sparseArray[10] = 10;
+        sparseArray[20] = 20;
+        sparseArray[30] = 30;
+        sparseArray[40] = 40;
+        sparseArray[2048] = 2048;
+
+    document.write("<br>Проход по массиву при помощи индекса:<br>")
+    for(var j = 0; j< solidArray.length; j++)
+    {
+        document.write(solidArray[j] + " ");
+    }
+    for(var j = 0; j< sparseArray.length; j++) //это проход индексатором
+    {
+        document.write(sparseArray[j] + " ");
+    }
+
+
+    sparseArray[30] = undefined;
+    delete sparseArray[40];
+    //delete действует ИНАЧЕ, чем просто присвоение элементу undefined, сейчас это увидим
+
+    document.write("<br>Проход по массиву при помощи итератора:<br>")
+    for(j in sparseArray)
+    {
+        document.write(sparseArray[j] + " ");
+    }
+    //в разреженном массиве пустые элементы не содержат undefined: их просто НЕТ.
+
+
+</script>
+</body>
+</html>

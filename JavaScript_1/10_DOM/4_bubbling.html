@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta http-equiv="Content-Type" content="text/html" charset="utf-8">
+    <style>
+        .outer {position: relative; height: 300px; width: 300px; background-color: #00B0F0}
+        .middle {position: absolute; top: 50px; left: 50px; height: 200px; width: 200px; background-color: #7030A0}
+        .inner {position: absolute; top: 50px; left: 50px; height: 100px; width: 100px; background-color: #0070C0}
+        .noHandler {}
+        .activated {background-color: #FDABFF}
+    </style>
+    <script>
+        function setHandlers()
+        {
+            var elements =document.getElementsByTagName("div");
+            //var elements = document.getElementsByClassName("outer")
+            for(var elt in elements)
+            {
+                if (!elements[elt].classList || elements[elt].classList.contains("noHandler")) continue;
+                elements[elt].addEventListener("click",highlight,true);//перехват
+                //таким образом можно задать обработчик для перехвата
+                elements[elt].addEventListener("click",highlight2,false);//обработка
+            }
+        }
+        highlight = function(event)
+        {
+            var self = this;
+            setTimeout(toggle, 2000);
+            alert("Обработчик: " + this.classList[0] + "; Цель: "+event.target.classList[0]);
+            function toggle(){
+                self.classList.toggle("activated");
+            }
+        }
+
+        highlight2 = function(event)
+        {
+            var self = this;
+            setTimeout(toggle, 4000);
+            alert("Обработчик: " + this.classList[0] + "; Цель: "+event.target.classList[0]);
+            function toggle(){
+                self.classList.toggle("activated");
+            }
+        }
+
+    </script>
+</head>
+<body onload=setHandlers()>
+<span>Погружение и всплытие:</span>
+<div class="outer">
+    <div class="middle">
+        <div class="inner">
+        </div>
+    </div>
+</div>
+<span>Делегирование:</span>
+<div class="outer noHandler" id="mainDiv">
+    <div class="middle noHandler">
+        <div class="inner noHandler">
+        </div>
+    </div>
+</div>
+<script>
+    //здесь определим делегат
+    var element = document.getElementById("mainDiv");
+    element.onmouseover = function(event)
+    {
+        if (event.target.tagName == "DIV")
+        {
+            event.target.classList.add("activated")
+        }
+    }
+    element.onmouseout = function(event)
+    {
+        if (event.target.tagName == "DIV")
+        {
+            event.target.classList.remove("activated")
+        }
+    }
+</script>
+</body>
+</html>

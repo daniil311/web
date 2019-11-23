@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <style type="text/css">
+        label {float:left; padding-right:10px;}
+        .field {clear:both; text-align:right; line-height:25px;}
+        .main {float:left;}
+
+    </style>
+    <script>
+        function validate(form)
+        {
+            var elems = form.elements;
+            var reg;
+            document.getElementById("errors").style.display="none"; //сбросим стиль
+            clearErrors();
+
+            if (!elems.namedItem("yourName").value)
+            {
+                showError("nameError");
+            }
+
+            if (!elems.namedItem("yourSurname").value)
+            {
+                showError("surnameError");
+            }
+
+            reg = new RegExp('^([0-9a-zA-Z]([-\\.\\w]*[0-9a-zA-Z])*@([0-9a-zA-Z][-\\w]*[0-9a-zA-Z]\\.)+[a-zA-Z]{2,9})$');
+            if (!elems.namedItem("yourEmail").value)
+            {
+                showError("emailError");
+            }
+
+            reg = new RegExp('^((((0[13578])|([13578])|(1[02]))[\\.](([1-9])|([0-2][0-9])|(3[01])))|(((0[469])|([469])|(11))[\\.](([1-9])|([0-2][0-9])|(30)))|((2|02)[\\.](([1-9])|([0-2][0-9]))))[\\.]\\d{4}$|^\\d{4}$');
+            if (!elems.namedItem("yourBirthday").value || !reg.exec(elems.namedItem("yourBirthday").value))
+            {
+                showError("birthdayError");
+            }
+
+        }
+        function showError(error)
+        {
+            document.getElementById(error).style.display="block";
+            document.getElementById("errors").style.display="block";
+        }
+        function clearErrors()
+        {
+            var elts = document.getElementsByName("errMsg");
+            for (var elt in elts)
+                elts.item(elt).style.display="none";
+        }
+    </script>
+</head>
+<body>
+<div id="errors" style="border: solid red 1px; color: red; display: none; width: 500px;">
+    <span id="nameError" style="display:none" name="errMsg">Не указано имя</span>
+    <span id="surnameError" style="display:none" name="errMsg">Не указана фамилия</span>
+    <span id="emailError" style="display:none" name="errMsg">Не указан адрес электронной почты</span>
+    <span id="birthdayError" style="display:none" name="errMsg">Не указана или неверно указана дата рождения (ДД.ММ.ГГГГ)</span>
+</div>
+<form>
+<div class="main" style="width:500px;">
+    <div class="field">
+        <label for="yourName">Имя</label>
+        <input type="text" id="yourName"/>
+    </div>
+    <div class="field">
+        <label for="yourSurname">Фамилия</label>
+        <input type="text" id="yourSurname"/>
+    </div>
+    <div class="field">
+        <label for="yourEmail">Электронный адрес</label>
+        <input type="text" id="yourEmail"/>
+    </div>
+    <div class="field">
+        <label for="yourBirthday">Дата рождения</label>
+        <input type="text" id="yourBirthday"/>
+    </div>
+    <div class="field">
+        <input type="button" onclick="validate(this.form)" value="Проверить"/>
+    </div>
+</div>
+</form>
+</body>
+</html>

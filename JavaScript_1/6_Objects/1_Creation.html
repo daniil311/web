@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta http-equiv="Content-Type" content="text/html" charset="utf-8">
+</head>
+<body>
+<script>
+    var empty = {}; //пустой объект
+    var point = { x:0, y:0 }; //объект с заданным набором свйоств
+    var point2 = { x:point.x, y:point.y+1 }; //Еще один объект с заданными свойствами
+
+    var book =   //сложный объект
+    {
+        "Название книги": "Lord of Infinite Loops",//наименования свойств могут содержать пробелы
+        'for': "для всех",  //и даже быть ключевыми словами
+        Автор:                   //Свойством объекта может быть другой объект
+        {
+            Имя: "Джон",         //Если наименования свойств простые,
+            Фамилия: "Толкин",   //их можно не заключать в кавычки
+            Инициалы: "Р.Р."
+        }
+    };
+
+    var o = new Object();
+    var d = new Date();
+    var a = new Array();
+    var r = new RegExp();
+    //и так далее
+
+    var o1 = Object.create({x:1, y:2}); //простой пример прототипа
+    document.write("<br>Обратимся к свойствам нового объекта...<br>");
+    for (var prop in o1)
+    {
+        document.write(prop + ": " + o1[prop] + "; ");
+    }
+    //свойства не только определены, им еще и заданы значения!
+</script>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta http-equiv="Content-Type" content="text/html" charset="utf-8">
+</head>
+<body>
+<script>
+    /*function myFunc()
+    {
+        alert("Это вызов функции");
+    }
+
+    var func = function(arg)
+    {
+        alert("Вызов функции с агрументом: "+arg);
+    }
+
+    document.write("<button onclick='myFunc()'>Простой вызов</button><br>");
+    document.write("<button onclick='func(10)'>Вызов с аргументом 10</button><br>");
+
+    myFuncObj = {};
+    myFuncObj.x = function(arg){return arg+arg};
+    myFuncObj[0] = function(arg1,arg2){return arg1*arg2};
+    document.write("Вызов функций из объекта: " + myFuncObj.x + " ----> " + myFuncObj["x"](1) + "<br>");
+    document.write("Вызов функций из объекта: " + myFuncObj[0] + " ----> " + myFuncObj[0](2,3) + "<br>");
+    //допустимы и такие вызовы:
+    var str = 'hello world';
+    document.write("Цепочка вызовов: " + str.toUpperCase().slice(5));*/
+
+    //контекст вызова вложенных функций
+    var o = {
+        m: function()           //функция объекта
+        {
+            var self = this;    //сохраняем контекст
+            function f()        //вложенная функция
+            {
+                document.write("<br>Проверяем контекст вызова f, this === o: " + (this === o));
+                document.write("<br>Проверяем контекст вызова f, this === window: " + (this === window));
+                document.write("<br>Проверяем сохраненный контекст f, self === o: " + (self === o));
+            }
+            document.write("<br>Проверяем контекст вызова m: " + (this === o));
+            f();
+        }
+    };
+    o.m();
+
+    //метод объекта, оторванный от него, теряет его контекст.
+    var x = {o: true};
+    x.checker = function() {return this.o.toString()};
+    var y = x.checker;
+    document.write("<br>проверим, что метод, оторванный от объекта, теряет контекст:")
+    document.write("<br>Проверка значения x.o в исходном контексте: " + x.checker());
+    document.write("<br>Проверка значения x.o через оторванный checker: " + y());
+</script>
+</body>
+</html>

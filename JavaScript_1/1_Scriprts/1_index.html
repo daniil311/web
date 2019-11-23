@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html" charset="utf-8">
+    <title></title>
+    <script>
+        alert("Этот скрипт в заголовке");
+    </script>
+</head>
+<body>
+<!-- внутри этого тега должно быть пусто -->
+<script src="example.js" defer></script>
+<script>
+    alert("Этот скрипт встроен в тело");
+</script>
+<button onclick="alert('Скрипт встроен в обработчик')">Кнопка</button>
+<a href="javascript:alert('Скрипт по ссылке')">Ссылка</a>
+</body>
+</html>

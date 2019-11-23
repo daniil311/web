@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta http-equiv="Content-Type" content="text/html" charset="utf-8">
+</head>
+<body>
+<script>
+    //Здесь мы рассмотрим несколько примеров работы с опеаторами
+    document.write("Если в строке число идет после текста... " + 1+2+3+4);
+    document.write("<br>А если число ДО текста...<br>");
+    document.write(1+2+3+4 + " " + 1+2+3+4+" " + (1+2+3+4)); //не уверен - расставляй скобки!
+    //Оператор + при работе со строками и числами демонстрирует специфическое поведение
+
+    var myObj = { x:1, y:1 };
+    document.write("<br>Проверяем на начличие x: " + ("x" in myObj));
+    document.write("<br>Проверяем на наличие z: " + ("z" in myObj));
+    //свойство x есть в объекте MyObj, а свойства z нет.
+    document.write("<br>Проверяем на наличие метода toString: " + ("toString" in myObj));
+
+    var myArray = [7,8,9];
+    document.write("<br>В массиве есть \"0\"? " + ("0" in myArray));
+    //это аналогично выражению Array["0"] != null
+    document.write("<br>В массиве есть 7? " + (7 in myArray));
+    //значение 7 есть, но обратиться можно только по идентификатору. А в позиции 7 - undefined.
+    document.write("<br>особенности оператора ++<br>");
+    var a = 0;
+    document.write("a = " + a + "<br>");
+    document.write("a++ = " + a++);
+    document.write(", после выполнения предыдущего действия a = " + a + "<br>");
+    document.write("++a = " + ++a);
+    document.write(", после выполнения предыдущего действия a = " + a);
+</script>
+</body>
+</html>

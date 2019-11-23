@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta http-equiv="Content-Type" content="text/html" charset="utf-8">
+    <script>
+        //Функция, которая запустит функцию через start миллисекунд;
+        //Затем будет ее запускать каждые interval миллисекунд;
+        //И прекратит ее выполнение по истечении start+end миллисекунд.
+        function invoke(f, start, interval, end) {
+            if (!start) start = 0;
+            //если передали только функцию (и, может быть, задержку)
+            if (arguments.length <= 2)
+                setTimeout(f, start); //просто запустить по таймауту
+            else
+            {
+                setTimeout(repeat, start); //запустить функцию-"повторяшку" по таймауту
+                function repeat()
+                {
+                    var h = setInterval(f, interval); //установить периодический запуск для f
+                    //если есть end, запустить ЕЩЕ одну функцию,
+                    //которая остановит предыдущую по таймауту
+                    if (end) setTimeout(function() { clearInterval(h); }, end);
+                }
+            }
+        }
+
+        function tryMe()
+        {
+            alert("прошло " +  (new Date - start)/1000 + " секунд");
+        }
+
+    </script>
+</head>
+<body>
+<script>
+    var start = new Date;
+    var myObj={start: new Date, count:0, elapsed:0};
+
+    var counter = function(obj)
+    {   return function()
+        {
+            obj.count++;
+            obj.elapsed = new Date - obj.start;
+        }
+    };
+
+    var alerter = function(obj)
+    {
+        return function()
+        {
+            alert("counter: " + obj.count + "раз, за " + obj.elapsed/1000 + " секунд");
+        }
+    };
+
+    invoke(tryMe,0,1000,10000);
+    //кто догадается, почему суммарно проходит не 10 секунд, а больше?
+
+    //invoke(counter(myObj),0,1000,10000);
+    //invoke(alerter(myObj),10500);
+</script>
+</body>
+</html>

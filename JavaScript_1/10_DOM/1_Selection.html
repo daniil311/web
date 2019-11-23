@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta http-equiv="Content-Type" content="text/html" charset="utf-8">
+    <style>
+    h1 { color: #a6780a; border-bottom: 2px solid black; }
+    h2.header { color: olive; font-weight: normal; }
+    p.emphasis { color: red; }
+    button.changed { color: blue; }
+    </style>
+    <script>
+        function byId(id)
+        {
+            var elt = document.getElementById(id);
+            elt.children[0].innerHTML = "А это измененный текст элемента с id = " + id;
+            //Обращаемся к элементу, а потом к тому, что заключено внутри его дочернего тэга
+        }
+
+        function byName(name)
+        {
+            var elts = document.getElementsByName(name);
+            //Найдет ВСЕ элементы с таким именем
+            for (var elt in elts)
+            elts.item(elt).type = "checkbox";
+            //Обращаемся к атрибуту тэга как к атрибуту элемента
+            elts.item(0).parentNode.classList.add("emphasis");
+        }
+
+        function byTag(tag)
+        {
+            var elts = document.getElementsByTagName(tag);
+            //Найдет ВСЕ элементы с таким тэгом!
+            elts.item(2).innerHTML = "<i>" + elts.item(2).innerHTML + "</i>";
+            //взяли конкретный элемент
+        }
+
+        function byCSSClass(CSSClass)
+        {
+            var elts = document.getElementsByClassName(CSSClass);
+            elts.item(0).classList.remove(CSSClass);
+        }
+
+        function byCSSSelector(selector)
+        {
+            var elts = document.querySelectorAll(selector);
+            for(var elt in elts)
+            {
+                //elts.item(elt).classList.add("changed");
+                elts.item(elt).setAttribute("class","changed");
+                //Устанавливаем нестандартный атрибут тэга
+            }
+        }
+
+    </script>
+</head>
+<body>
+<div id="myDiv" class ="h1">
+    <h1>Это текст раздела myDiv</h1>
+</div>
+<p>
+    <input type="radio" name="choice" value="c1"> Значение 1<Br>
+    <input type="radio" name="choice" value="c2"> Значение 2<Br>
+    <input type="radio" name="choice" value="c3"> Значение 3<Br>
+</p>
+<div id="anotherDiv">
+    <h2 class="header">Это текст раздела anotherDiv</h2>
+</div>
+
+<div id="yetAnotherDiv">
+    Это текст раздела yetAnotherDiv
+</div>
+
+<button onclick="byId('myDiv')">Найти и изменить по id</button>
+<button onclick="byName('choice')">Найти и изменить по name</button>
+<button onclick="byTag('div')">Найти и изменить по тэгу</button>
+<button onclick="byCSSClass('header')">Найти и изменить по CSS классу</button>
+<button onclick="byCSSSelector('button:last-child')">Найти и изменить CSS селектором</button>
+
+
+</body>
+</html>

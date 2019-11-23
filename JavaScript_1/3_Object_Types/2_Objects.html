@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta http-equiv="Content-Type" content="text/html" charset="utf-8">
+</head>
+<body>
+<script>
+    s = "hello";
+    S = s.toUpperCase();
+    s[0] = "H"; //попытаемся заменить первую букву
+    document.write("Преобразуем строку '" + s + "' в верхний регистр: " + S + "<br>");
+    //увидим что исходная строка не изменилаась
+</script>
+Теперь поработаем с объектами.<br>
+<script>
+    obj = {}; //инициализируем объект
+    obj1 = {x: 1}; //можно и так, с заданием свойства
+    obj1.x = 2;
+    obj.y = obj1.x + 1; //дальше: неявно добавим свойство к объекту obj
+    document.write(obj1.x + obj.y); //проверим, что все работает так, как надо
+    document.write("<br>");
+    arr = [1,2,3];
+    arr[0]=-1;
+    arr[4] = arr[2]*2;
+    document.write(arr + "<br>");
+    document.write(arr[3] + "<br>");
+    document.write("При этом элемент №3 массива, о котором неизвестно вообще ничего, будет " + arr[3] + "<br>");
+</script>
+<br>А теперь посмотрим, как объекты сравнивают.<br>
+<script>
+    o1 = {x:1};
+    o2 = {x:1};
+    document.write("Два одинаковых объекта равны? - " + (o1 == o2) + "<br>");
+    var o3 = o1;
+    document.write("А если это один и тот же объект? - " + (o1 === o3) + "<br>");
+    o3.x = 3;
+    document.write("А он точно один и тот же? - " + (o1.x == o3.x) + "<br>");
+    o2.x = "3";
+    document.write("А теперь давайте сравним свойства разных объектов: " + (o2.x == o3.x) + "/" + (o2.x === o3.x) + "<br>"); //o2 и o3 - объекты, но o2.x и o3.x - примитивы.
+</script>
+</body>
+</html>
