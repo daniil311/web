@@ -1,0 +1,4 @@
+body{text-align: center; font-size: large}
+a[href="google.com"]{color:blue}
+a[href="ya.ru"]{color:red}
+a {color:green}

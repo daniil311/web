@@ -1,0 +1,4 @@
+body{text-align: center; font-size: large}
+* div * {background:blue}
+div p * {background:red}
+* {background:green}

@@ -1,0 +1,7 @@
+body{text-align: center; font-size: large}
+table{margin: auto}
+table * {padding: 10px}
+td:hover, tr:first-of-type td:first-of-type, tr:nth-of-type(2) td:nth-of-type(2),
+tr:nth-of-type(3) td:nth-of-type(3) {background:green}
+tr:first-of-type td:first-of-type:hover, tr:nth-of-type(2) td:nth-of-type(2):hover,
+tr:nth-of-type(3) td:nth-of-type(3):hover {background:red}

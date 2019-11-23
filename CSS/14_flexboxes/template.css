@@ -1,0 +1,28 @@
+/** {*/
+/*    box-sizing: border-box;*/
+/*}*/
+/*body {*/
+/*    margin: 0;*/
+/*}*/
+main {
+    display: flex;
+    min-height: 60vh /*60% высоты экрана*/
+}
+main > article {
+    flex: 1; /*Во все стороны в пропорции 1 к 1 flex-grow, flex-shrink и flex-basis*/
+}
+main > nav,
+main > aside {
+    flex: 0 0 20vw;/*не расширяется и не сжимается, занимает 20%*/
+    background: beige;
+}
+main > nav {
+    order: -1; /*определяет порядок размещения - этот раньше всех*/
+}
+header, footer, article, nav, aside {
+    padding: 1em;
+}
+header, footer {
+    background: yellowgreen;
+    height: 20vh;
+}

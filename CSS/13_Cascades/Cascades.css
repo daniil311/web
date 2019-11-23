@@ -1,0 +1,5 @@
+body{text-align: center; font-size: large}
+table{margin: auto}
+table * {padding: 10px}
+tr:first-of-type td:nth-of-type(2), tr:first-of-type td:nth-of-type(3) {background:green}/*Стиль автора*/
+tr:nth-of-type(2) td:first-of-type, tr:nth-of-type(2) td:nth-of-type(2) {background:green !important;}/*Стиль автора*/

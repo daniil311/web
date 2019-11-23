@@ -1,0 +1,20 @@
+.container {
+    display: flex; /*это флекс-контейнер, все что внутри него работает по флекс-правилам*/
+}
+.red {
+    background: orangered;
+    flex-grow: 1; /*размер этого элемента растет 1 к 1 размеру всего контейнера/окна/ сужается, если другие
+                    части контейнера растут*/
+}
+.green {
+    background: yellowgreen;
+}
+.blue {
+    background: steelblue;
+    /*width: 500px;*/
+}
+.container > div {
+    font-size: 50px;
+    padding: 10px;
+    color: white;
+}

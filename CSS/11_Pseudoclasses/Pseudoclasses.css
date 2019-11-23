@@ -1,0 +1,4 @@
+body{text-align: center; font-size: large}
+table{margin: auto}
+table * {padding: 10px}
+td:hover{background:green}
